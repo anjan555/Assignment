@@ -28,3 +28,4 @@
 	  And I drag drop the "Hang Up or Exit" component
      Then I adjust exit apps on canvas.  
      Then I connect it with Mail and SMS components.
+	  And I Verify that all thecomponents are on canvas.

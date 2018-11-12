@@ -142,8 +142,22 @@ namespace Plivo.StepDefinitions
         public void ThenIConnectItWithMailAndSMSComponents_()
         {
             _CanvasPage.ConectExitAppWithMailAndSmsComponent();
-            Thread.Sleep(1000);
+            
         }
+
+        [Then(@"I Verify that all thecomponents are on canvas\.")]
+        public void ThenIVerifyThatAllThecomponentsAreOnCanvas_()
+        {
+            var IsSmsComponentVisible = _CanvasPage.IsSmsComponentVisible();
+            var IsEmailComponentVisible = _CanvasPage.IsMailComponentVisible();
+
+            if(!(IsSmsComponentVisible && IsEmailComponentVisible))
+            {
+                Assert.Fail("Components are not seen");
+            }
+            
+        }
+
 
 
     }

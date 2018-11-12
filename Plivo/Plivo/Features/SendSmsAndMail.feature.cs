@@ -17,55 +17,35 @@ namespace Plivo.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
+    [TechTalk.SpecRun.FeatureAttribute("SendSmsAndMail", Description="\tThis featue is for configuring SMS and mail components.", SourceFile="Features\\SendSmsAndMail.feature", SourceLine=0)]
     public partial class SendSmsAndMailFeature
     {
         
-        private static TechTalk.SpecFlow.ITestRunner testRunner;
-        
-        private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
+        private TechTalk.SpecFlow.ITestRunner testRunner;
         
 #line 1 "SendSmsAndMail.feature"
 #line hidden
         
-        public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
+        [TechTalk.SpecRun.FeatureInitialize()]
+        public virtual void FeatureSetup()
         {
-            get
-            {
-                return this._testContext;
-            }
-            set
-            {
-                this._testContext = value;
-            }
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
-        public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
-        {
-            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner(null, 0);
+            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SendSmsAndMail", "\tThis featue is for configuring SMS and mail components.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
-        public static void FeatureTearDown()
+        [TechTalk.SpecRun.FeatureCleanup()]
+        public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
-            if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "SendSmsAndMail")))
-            {
-                global::Plivo.Features.SendSmsAndMailFeature.FeatureSetup(null);
-            }
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
+        [TechTalk.SpecRun.ScenarioCleanup()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -74,7 +54,6 @@ namespace Plivo.Features
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Microsoft.VisualStudio.TestTools.UnitTesting.TestContext>(_testContext);
         }
         
         public virtual void ScenarioStart()
@@ -87,11 +66,9 @@ namespace Plivo.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Verify that SMS and Mail apps are connected to eachother.")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "SendSmsAndMail")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UI")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Sanity")]
+        [TechTalk.SpecRun.ScenarioAttribute("Verify that SMS and Mail apps are connected to eachother.", new string[] {
+                "UI",
+                "Sanity"}, SourceLine=6)]
         public virtual void VerifyThatSMSAndMailAppsAreConnectedToEachother_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify that SMS and Mail apps are connected to eachother.", null, new string[] {
@@ -164,8 +141,16 @@ namespace Plivo.Features
      testRunner.Then("I adjust exit apps on canvas.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 30
      testRunner.Then("I connect it with Mail and SMS components.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 31
+   testRunner.And("I Verify that all thecomponents are on canvas.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.TestRunCleanup()]
+        public virtual void TestRunCleanup()
+        {
+            TechTalk.SpecFlow.TestRunnerManager.GetTestRunner().OnTestRunEnd();
         }
     }
 }
