@@ -41,6 +41,8 @@ namespace PlivoPages.Pages
         public IWebElement SmsSentNode => _driver.FindElement(By.XPath("//div[text()='Send an SMS']/../../../..//div[text()='Sent']/../div[1]"));
         public IWebElement EmailSent => _driver.FindElement(By.XPath("//div[text()='Send an Email']/../../../..//div[text()='Sent']/../div[1]"));
         public IWebElement EmailnotSent => _driver.FindElement(By.XPath("//div[text()='Send an Email']/../../../..//div[text()='Not sent']/../div[2]"));
+        public IWebElement SmsComponent => _driver.FindElement(By.XPath("//div[contains(text(),'Send an SMS')]"));
+        public IWebElement MailComponent => _driver.FindElement(By.XPath("//div[contains(text(),'Send an Email')]"));
         #endregion
 
         #region //Page Actions
@@ -102,6 +104,16 @@ namespace PlivoPages.Pages
             WebdriverActionUtilities.DragAndDrop(_driver, SmsSentNode, ExitAppNodesList[0]);
             WebdriverActionUtilities.DragAndDrop(_driver, EmailnotSent, ExitAppNodesList[1]);
             WebdriverActionUtilities.DragAndDrop(_driver, EmailSent, ExitAppNodesList[2]);
+        }
+
+        public bool IsSmsComponentVisible()
+        {
+            return WebElementUtilities.checkIfElementExists(_driver,SmsComponent);
+        }
+
+        public bool IsMailComponentVisible()
+        {
+            return WebElementUtilities.checkIfElementExists(_driver, MailComponent);
         }
         #endregion
     }

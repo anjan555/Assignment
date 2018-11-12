@@ -20,5 +20,19 @@ namespace Plivo.SeleniumCore.Utilities
             }
             return ElementFound;
         }
+
+        public static bool checkIfElementExists(this IWebDriver driverInstance, IWebElement Element)
+        {
+            var ElementFound = true;
+            try
+            {
+                var elementToBeFound = Element.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                ElementFound = false;
+            }
+            return ElementFound;
+        }
     }
 }
