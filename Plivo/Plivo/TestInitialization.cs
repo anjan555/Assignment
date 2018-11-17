@@ -9,6 +9,10 @@ using OpenQA.Selenium;
 using Plivo.SeleniumCore;
 using TechTalk.SpecFlow;
 using Plivo.SeleniumCore.Utilities;
+using Plivo.SeleniumCore.Helpers;
+using AventStack.ExtentReports.Reporter;
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Gherkin.Model;
 
 namespace Plivo
 {
@@ -17,10 +21,40 @@ namespace Plivo
     {
 
         private string _browser;
-        private IWebDriver _driver;
-        private readonly ScenarioContext _scenarioContext;
-        private string _dayFolderName;
+        
+        
         private static string _url;
+        private string _scenarioTitle;
+
+        private static ExtentTest featureName;
+        private static ExtentTest scenarioName;
+        private static ExtentReports extent;
+
+
+        [BeforeTestRun]
+
+        public static void InitializeReport()
+        {
+            var ReportFolderPath = Helper.CreateFolder("ExtentReports");
+            var htmlreporter = new ExtentHtmlReporter(ReportFolderPath+@"\ExtentReport.html");
+            htmlreporter.Configuration().Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
+
+            extent = new ExtentReports();
+            extent.AttachReporter(htmlreporter);
+
+        }
+
+        [AfterTestRun]
+        public static void ExtentFlush()
+        {
+            extent.Flush();
+        }
+
+        [BeforeFeature]
+        public static void BeforeFeature()
+        {
+            featureName = extent.CreateTest<Feature>(FeatureContext.Current.FeatureInfo.Title);
+        }
 
         [BeforeScenario]
 
@@ -28,29 +62,56 @@ namespace Plivo
         {
             _browser = ConfigurationManager.AppSettings["Browser"];
             _url = ConfigurationManager.AppSettings["Url"];
-
+            
             Driver.SelectBrowser(_browser,_url);
-          
+            scenarioName = featureName.CreateNode<Scenario>(ScenarioContext.Current.ScenarioInfo.Title);
+            _scenarioTitle = ScenarioContext.Current.ScenarioInfo.Title;
         }
 
-       
+        [AfterStep]
+        public void InserReportSteps()
+        {
+            var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
+
+            if (ScenarioContext.Current.TestError == null)
+            {
+                if (stepType == "Given")
+                    scenarioName.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
+                else if (stepType == "When")
+                    scenarioName.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
+                else if (stepType == "Then")
+                    scenarioName.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
+                else if (stepType == "And")
+                    scenarioName.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
+            }
+
+            else if (ScenarioContext.Current.TestError != null)
+            {
+                if (stepType == "Given")
+                    scenarioName.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
+                else if (stepType == "When")
+                    scenarioName.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
+                else if (stepType == "Then")
+                    scenarioName.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
+                else if (stepType == "And")
+                    scenarioName.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
+
+            }
+        }
+      
         [AfterScenario]
         public void CloseBrowser()
         {
             try
             {
-                if (_scenarioContext.TestError != null || ExceptionHandler.CurrentException != null)
+                if (ScenarioContext.Current.TestError != null || ExceptionHandler.CurrentException != null)
                 {
-                    _dayFolderName = "PlivoTestResult" + DateTime.Now.ToString("d").Replace("/", "");
-                    var errorDirectoryName = _scenarioContext["Results"] + _dayFolderName;
-                    var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
-                    Directory.CreateDirectory(errorDirectoryName);
-                    screenshot.SaveAsFile(errorDirectoryName + "/" + _scenarioContext.ScenarioInfo.Title + ".Png", ScreenshotImageFormat.Png);
+                    WebDriverUtilities.CaptureScreenShot(_scenarioTitle);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                //ignore
+                WebDriverUtilities.CaptureScreenShot(_scenarioTitle);
             }
 
             Driver.CloseBrowser();
