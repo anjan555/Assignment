@@ -20,14 +20,14 @@ namespace PlivoPages.Pages
         #endregion
 
         #region //Page Elements
-        public IWebElement btn => _driver.FindElement(By.Name(""));
-        public IWebElement CreateAppBtn => _driver.FindElement(By.Id("link-create"));
-        public IWebElement StartAppBtn => _driver.FindElement(By.XPath(_startApp));
-        public IWebElement AddNewPageBtn => _driver.FindElement(By.Id("add-page"));
-        public IWebElement NewPageTxt => _driver.FindElement(By.XPath("//input[@name='name' and @type='text' and @class='indented submitonenter']"));
-        public IWebElement CreateNewAppBtn => _driver.FindElement(By.XPath("//div/span[text()='New Page']/../..//div/button[text()='Create']"));
-        public IWebElement MessagingMenu => _driver.FindElement(By.XPath("//a[contains(text(),'Messaging')]"));
-        public IWebElement BasicMenu => _driver.FindElement(By.XPath("//a[contains(text(),'Basic')]"));
+        private IWebElement btn => _driver.FindElement(By.Name(""));
+        private IWebElement CreateAppBtn => _driver.FindElement(By.Id("link-create"));
+        private IWebElement StartAppBtn => _driver.FindElement(By.XPath(_startApp));
+        private IWebElement AddNewPageBtn => _driver.FindElement(By.Id("add-page"));
+        private IWebElement NewPageTxt => _driver.FindElement(By.XPath("//input[@name='name' and @type='text' and @class='indented submitonenter']"));
+        private IWebElement CreateNewAppBtn => _driver.FindElement(By.XPath("//div/span[text()='New Page']/../..//div/button[text()='Create']"));
+        private IWebElement MessagingMenu => _driver.FindElement(By.XPath("//a[contains(text(),'Messaging')]"));
+        private IWebElement BasicMenu => _driver.FindElement(By.XPath("//a[contains(text(),'Basic')]"));
         #endregion
 
         #region //Page Actions

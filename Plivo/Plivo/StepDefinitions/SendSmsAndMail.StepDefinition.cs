@@ -93,7 +93,6 @@ namespace Plivo.StepDefinitions
             _CanvasPage.AdjustComponent();
         }
 
-
         private class MailDetails
         {
             public string SmtpHost { get; set; }

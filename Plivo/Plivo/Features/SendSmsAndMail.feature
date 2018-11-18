@@ -29,3 +29,19 @@
      Then I adjust exit apps on canvas.  
      Then I connect it with Mail and SMS components.
 	  And I Verify that all thecomponents are on canvas.
+
+@UI @Sanity 
+Scenario: Add Sms and Mail Components
+
+	Given I have a valid url to launch the application.
+     Then I will create an App.
+      And I select Get started to start building an App.
+     Then I will create new page by giving the name "TestApp".
+	 Then I Select Messaging Menu.
+      And I drag drop the "Send an SMS" component
+     Then I enter the following details to the SMS Component
+      | PhoneNumber | Message     | 
+      | 123456789   | Hello Plivo | 
+      And I connect the components start and SMS.
+     Then I drag drop the "Send an Email" component
+	  And I Adjust space on Canvas. 

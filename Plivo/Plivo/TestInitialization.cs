@@ -29,6 +29,7 @@ namespace Plivo
         private static ExtentTest featureName;
         private static ExtentTest scenarioName;
         private static ExtentReports extent;
+        private static KlovReporter klov;
 
 
         [BeforeTestRun]
@@ -40,6 +41,18 @@ namespace Plivo
             htmlreporter.Configuration().Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
 
             extent = new ExtentReports();
+
+            #region Klov reporting 
+            // For Kolov report - Historical data uncomment the following lines.
+
+            //klov = new KlovReporter();
+            //klov.InitMongoDbConnection("localhost", 27017);
+            //klov.ProjectName="Plivo";
+            //klov.KlovUrl = "http://localhost";
+            //klov.ReportName = "PlivoExecution" + DateTime.Now.ToString("yyyyMMddhhmmss");
+
+            //extent.AttachReporter(htmlreporter,klov);
+            #endregion
             extent.AttachReporter(htmlreporter);
 
         }
@@ -69,8 +82,10 @@ namespace Plivo
         }
 
         [AfterStep]
+        
         public void InserReportSteps()
         {
+            
             var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
 
             if (ScenarioContext.Current.TestError == null)
