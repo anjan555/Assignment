@@ -22,27 +22,26 @@ namespace PlivoPages.Pages
         #endregion
 
         #region //Page Elements
-        public IWebElement StartNode => _driver.FindElement(By.XPath("//div[@id='tabs-2']//div[@class='mod-rail mod-south']/div[@class='syn-node ui-draggable syn-node-active']"));
-        public IWebElement SmsNode => _driver.FindElement(By.XPath("//div[@id='tabs-2']//div[@class='mod-rail mod-north']/div[@class='syn-receptor ui-droppable syn-receptor-north ui-draggable syn-receptor-draggable']"));
-        public IWebElement PhoneNumberTxt => _driver.FindElement(By.XPath("//textarea[@name='phone_constant']"));
-        public IList<IWebElement> MessageTxt => _driver.FindElements(By.XPath("//div[contains(text(),'Phone number:')]/../../..//textarea[@name='message_phrase[]']"));
-
-        public IWebElement Smtptxt => _driver.FindElement(By.XPath("//input[@name='smtp_url']"));
-        public IWebElement PortTxt => _driver.FindElement(By.XPath("//input[@name='port']"));
-        public IWebElement UserNameTxt => _driver.FindElement(By.XPath("//div[@class='panel-subsection']/div[contains(text(),'Username')]/..//input[@name='username']"));
-        public IWebElement PasswordTxt => _driver.FindElement(By.XPath("//input[@name='password']"));
-        public IWebElement ToTxt => _driver.FindElement(By.XPath("//textarea[@name='to_constant']"));
-        public IWebElement FromTxt => _driver.FindElement(By.XPath("//textarea[@name='from_constant']"));
-        public IWebElement SubjectTxt => _driver.FindElement(By.XPath("//textarea[@name='subject_constant']"));
-        public IWebElement CcTxt => _driver.FindElement(By.XPath("//textarea[@name='cc_constant']"));
-        public IList<IWebElement> MailMessageTxt => _driver.FindElements(By.XPath("//div[contains(text(),'Cc:')]/../../..//textarea[@name='message_phrase[]']"));
-        public IList<IWebElement> ExitAppList => _driver.FindElements(By.XPath("//div[@class='module-title' and contains(text(),'Exit')]"));
-        public IList<IWebElement> ExitAppNodesList => _driver.FindElements(By.XPath("//div[text()='Exit App']/../../../..//div[@class='syn-receptor ui-droppable syn-receptor-north ui-draggable syn-receptor-draggable']"));
-        public IWebElement SmsSentNode => _driver.FindElement(By.XPath("//div[text()='Send an SMS']/../../../..//div[text()='Sent']/../div[1]"));
-        public IWebElement EmailSent => _driver.FindElement(By.XPath("//div[text()='Send an Email']/../../../..//div[text()='Sent']/../div[1]"));
-        public IWebElement EmailnotSent => _driver.FindElement(By.XPath("//div[text()='Send an Email']/../../../..//div[text()='Not sent']/../div[2]"));
-        public IWebElement SmsComponent => _driver.FindElement(By.XPath("//div[contains(text(),'Send an SMS')]"));
-        public IWebElement MailComponent => _driver.FindElement(By.XPath("//div[contains(text(),'Send an Email')]"));
+        private IWebElement StartNode => _driver.FindElement(By.XPath("//div[@id='tabs-2']//div[@class='mod-rail mod-south']/div[@class='syn-node ui-draggable syn-node-active']"));
+        private IWebElement SmsNode => _driver.FindElement(By.XPath("//div[@id='tabs-2']//div[@class='mod-rail mod-north']/div[@class='syn-receptor ui-droppable syn-receptor-north ui-draggable syn-receptor-draggable']"));
+        private IWebElement PhoneNumberTxt => _driver.FindElement(By.XPath("//textarea[@name='phone_constant']"));
+        private IList<IWebElement> MessageTxt => _driver.FindElements(By.XPath("//div[contains(text(),'Phone number:')]/../../..//textarea[@name='message_phrase[]']"));
+        private IWebElement Smtptxt => _driver.FindElement(By.XPath("//input[@name='smtp_url']"));
+        private IWebElement PortTxt => _driver.FindElement(By.XPath("//input[@name='port']"));
+        private IWebElement UserNameTxt => _driver.FindElement(By.XPath("//div[@class='panel-subsection']/div[contains(text(),'Username')]/..//input[@name='username']"));
+        private IWebElement PasswordTxt => _driver.FindElement(By.XPath("//input[@name='password']"));
+        private IWebElement ToTxt => _driver.FindElement(By.XPath("//textarea[@name='to_constant']"));
+        private IWebElement FromTxt => _driver.FindElement(By.XPath("//textarea[@name='from_constant']"));
+        private IWebElement SubjectTxt => _driver.FindElement(By.XPath("//textarea[@name='subject_constant']"));
+        private IWebElement CcTxt => _driver.FindElement(By.XPath("//textarea[@name='cc_constant']"));
+        private IList<IWebElement> MailMessageTxt => _driver.FindElements(By.XPath("//div[contains(text(),'Cc:')]/../../..//textarea[@name='message_phrase[]']"));
+        private IList<IWebElement> ExitAppList => _driver.FindElements(By.XPath("//div[@class='module-title' and contains(text(),'Exit')]"));
+        private IList<IWebElement> ExitAppNodesList => _driver.FindElements(By.XPath("//div[text()='Exit App']/../../../..//div[@class='syn-receptor ui-droppable syn-receptor-north ui-draggable syn-receptor-draggable']"));
+        private IWebElement SmsSentNode => _driver.FindElement(By.XPath("//div[text()='Send an SMS']/../../../..//div[text()='Sent']/../div[1]"));
+        private IWebElement EmailSent => _driver.FindElement(By.XPath("//div[text()='Send an Email']/../../../..//div[text()='Sent']/../div[1]"));
+        private IWebElement EmailnotSent => _driver.FindElement(By.XPath("//div[text()='Send an Email']/../../../..//div[text()='Not sent']/../div[2]"));
+        private IWebElement SmsComponent => _driver.FindElement(By.XPath("//div[contains(text(),'Send an SMS')]"));
+        private IWebElement MailComponent => _driver.FindElement(By.XPath("//div[contains(text(),'Send an Email')]"));
         #endregion
 
         #region //Page Actions

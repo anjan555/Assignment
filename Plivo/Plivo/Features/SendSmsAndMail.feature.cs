@@ -147,6 +147,48 @@ namespace Plivo.Features
             this.ScenarioCleanup();
         }
         
+        [TechTalk.SpecRun.ScenarioAttribute("Add Sms and Mail Components", new string[] {
+                "UI",
+                "Sanity"}, SourceLine=33)]
+        public virtual void AddSmsAndMailComponents()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Sms and Mail Components", null, new string[] {
+                        "UI",
+                        "Sanity"});
+#line 34
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 36
+ testRunner.Given("I have a valid url to launch the application.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 37
+     testRunner.Then("I will create an App.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 38
+      testRunner.And("I select Get started to start building an App.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 39
+     testRunner.Then("I will create new page by giving the name \"TestApp\".", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 40
+  testRunner.Then("I Select Messaging Menu.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 41
+      testRunner.And("I drag drop the \"Send an SMS\" component", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "PhoneNumber",
+                        "Message"});
+            table3.AddRow(new string[] {
+                        "123456789",
+                        "Hello Plivo"});
+#line 42
+     testRunner.Then("I enter the following details to the SMS Component", ((string)(null)), table3, "Then ");
+#line 45
+      testRunner.And("I connect the components start and SMS.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 46
+     testRunner.Then("I drag drop the \"Send an Email\" component", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 47
+   testRunner.And("I Adjust space on Canvas.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
         [TechTalk.SpecRun.TestRunCleanup()]
         public virtual void TestRunCleanup()
         {

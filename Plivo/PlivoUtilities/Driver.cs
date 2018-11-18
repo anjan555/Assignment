@@ -11,13 +11,10 @@ namespace Plivo.SeleniumCore
 {
     public static class Driver
     {
-      //  [ThreadStatic]
-        public static IWebDriver driver;
-          
+        [ThreadStatic]
+        public static IWebDriver driver;          
         private static string _browser;
-
         private static string _url;
-
         private static string _dayFolderName;
         
         public static void SelectBrowser(string _browser,string _url)
