@@ -43,8 +43,12 @@ Features of Framework:
 
 4 : Parallel test is based on configuration.
 
-5 : Report is created, as of now using default report from specflow.
-------------------------------------------------------------------------------------------------------------------------------------------
+5 : Reports
+
+a ) Default specrun report is generated.
+b ) Added extent report, which can be used as both report and logging mechanism.
+c ) Klov reporting with mongodb is used for trach historical test runs.
+----------------------------------------------------------------------------------------------------------------------------------------
 
 
 
